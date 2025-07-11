@@ -1,0 +1,14 @@
+{
+  "data_name": [
+    "PP_geo",
+    "PP_geo_hour",
+    "PP_hour"
+  ],
+  "model_name": "blip2",
+  "model_params": {
+    "pretrained_model": "Salesforce/blip2-itm-vit-g-coco",
+    "use_itm": 0
+  },
+  "subset_k": 200,
+  "top_k": 20
+}

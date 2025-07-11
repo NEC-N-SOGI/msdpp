@@ -1,0 +1,88 @@
+{
+  "editor.formatOnSave": true,
+  // Files
+  "files.encoding": "utf8",
+  "files.eol": "\n",
+  // Python
+  "[python]": {
+    "editor.tabSize": 4,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "always",
+      "source.fixAll": "always"
+    }
+  },
+  "mypy-type-checker.importStrategy": "fromEnvironment",
+  "mypy-type-checker.reportingScope": "workspace",
+  "mypy-type-checker.ignorePatterns": [
+    "**/site-packages/**/*.py",
+    ".vscode/*.py",
+    "modules/**/*.py",
+    "**/share_datasets/**",
+    "**/share_datasets2/**",
+    "**/share_datasets3/**",
+    "**/node_modules",
+    "**/__pycache__",
+    "data/**/*.py",
+  ],
+  "python.ty.disableLanguageServices": true, // to suppress inlay hints
+  "ty.trace.server": "messages",
+  "ty.interpreter": [
+    "/msdpp/.venv/bin/python"
+  ],
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#332E0A",
+    "titleBar.activeBackground": "#47410E",
+    "titleBar.activeForeground": "#FCFBF1"
+  },
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/*/**": true,
+    "**/share_datasets/**": true,
+    "**/share_datasets2/**": true,
+    "**/share_datasets3/**": true,
+    "**/__pycache__*/**": true,
+    "**/.venv/**": true
+  },
+  "files.exclude": {
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/.venv": true
+  },
+  "search.exclude": {
+    "**/Annotations": true,
+    "**/Sentences": true,
+    "**/.venv": true,
+    "**/share_datasets/**": true,
+    "**/share_datasets2/**": true,
+    "**/share_datasets3/**": true,
+    "**/__pycache__*/**": true,
+    "**/node_modules": true,
+  },
+  "path-autocomplete.pathMappings": {
+    "/": "/", // root
+  },
+  "plantuml.jar": "environments/plantuml/plantuml.jar",
+  "plantuml.exportOutDir": "figs",
+  "plantuml.exportSubFolder": false,
+  "plantuml.exportIncludeFolderHierarchy": false,
+  "[markdown]": {
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+  },
+  "debugpy.debugJustMyCode": false,
+  "jupyter.debugJustMyCode": false,
+  "python.testing.pytestArgs": [
+    "tests"
+  ],
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": true,
+}

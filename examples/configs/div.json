@@ -1,0 +1,22 @@
+{
+  "dpps": {
+    "div_method": [
+      "dpp_sim_average",
+      "msdpp",
+      "msdpp_tn",
+      "msdpp_tn_tvms"
+    ],
+    "div_params": {
+      "beta": [
+        0.4,
+        0.5,
+        0.6
+      ],
+      "theta": [
+        0.8,
+        0.9
+      ]
+    },
+    "name_suffix": ""
+  }
+}

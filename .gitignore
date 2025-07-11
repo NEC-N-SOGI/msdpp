@@ -1,0 +1,17 @@
+data/*
+__pycache__
+.coverage
+.mypy_cache
+.pytest_cache
+.venv
+!data/save_pp_spice.py
+!data/pixelprose_preprocess.py
+!data/pp_util.py
+.build*
+.ruff_cache
+share_datasets
+share_datasets2
+share_datasets3
+
+.mlflow.json
+experiments

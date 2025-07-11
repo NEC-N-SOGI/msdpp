@@ -1,0 +1,30 @@
+name: linting_and_formatting
+
+on: [push, pull_request]
+jobs:
+  lint-and-format:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install uv
+      uses: astral-sh/setup-uv@v3
+      with:
+        version: "latest"
+    - name: Set up Python
+      run: uv python install 3.10
+    - name: backup uv.lock
+      run: cp uv.lock uv.lock.bak
+    - name: Install dependencies
+      run: uv sync --dev --native-tls --frozen
+    - name: formatting
+      run: |
+        make format
+    - name: linting
+      run: |
+        make lint
+    - name: Restore uv.lock
+      run: mv uv.lock.bak uv.lock
+    - name: Auto commit
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: Apply Code Formatter

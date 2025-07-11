@@ -1,0 +1,12 @@
+environments
+.mypy_cache
+.pytest_cache
+.ruff_cache
+.vscode
+data
+.coverage
+.dockerignore
+.git
+.github
+.gitignore
+.venv

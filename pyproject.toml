@@ -1,0 +1,145 @@
+[project]
+name = "msdpp"
+version = "0.0.1"
+description = ""
+authors = [{ name = "Naoya Sogi", email = "naoya-sogi@nec.com" }]
+readme = "README.md"
+requires-python = ">=3.10,<3.12"
+
+dependencies = [
+  "opencv-python>=4.7",
+  "scikit-learn>=1.2.2",
+  "transformers>=4.25.0",
+  "tqdm>=4.66.2",
+  "natsort>=8.4.0",
+  "datasets>=3.0.2",
+  "pydantic>=2.10.3",
+  "numpy>=1.24.3",
+  "scipy>=1.10.1",
+  "torch>=2.5.1",
+  "torchvision>=0.20.1",
+  "pycocoevalcap>=1.2",
+]
+
+[dependency-groups]
+dev = [
+  "ipykernel>=6.29.5",
+  "mypy>=1.13.0",
+  "pip>=24.3.1",
+  "pytest>=8.3.4",
+  "ruff>=0.8.2",
+  "mdformat-gfm>=0.3.6",
+  "mdformat-frontmatter>=2.0.8",
+  "mdformat-footnote>=0.1.1",
+  "pytest-cov>=5.0.0",
+  "matplotlib>=3.7.1",
+  "colorlog>=6.7.0",
+  "plotly>=5.14.1",
+  "hydra-core>=1.3.2",
+  "ipympl>=0.9.3",
+  "filelock>=3.12.0",
+  "pyvirtualdisplay>=3.0",
+  "seaborn>=0.13.2",
+  "folium>=0.18.0",
+  "geopandas>=1.0.1",
+  "ruff>=0.8.2",
+  "ty>=0.0.1a12",
+  "validate-pyproject>=0.24.1",
+  "pre-commit>=4.2.0",
+  "pyright>=1.1.402",
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu118"
+url = "https://download.pytorch.org/whl/cu118"
+explicit = true
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu118", marker = "platform_system != 'Darwin'" }]
+torchvision = [
+  { index = "pytorch-cu118", marker = "platform_system != 'Darwin'" },
+]
+
+[tool.mypy]
+python_version = "3.10"
+disallow_subclassing_any = true
+disallow_untyped_calls = true
+ignore_missing_imports = true
+strict_equality = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unreachable = true
+warn_unused_configs = true
+warn_unused_ignores = true
+exclude = ["^share_datasets*"]
+
+
+[tool.pyright]
+include = ["src"]
+exclude = ["**/node_modules", "**/__pycache__", "**/share_datasets*"]
+reportMissingImports = true
+reportMissingTypeStubs = false
+
+pythonVersion = "3.10"
+pythonPlatform = "Linux"
+
+
+[tool.ruff]
+line-length = 85
+indent-width = 4
+target-version = "py310"
+exclude = [".venv"]
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+  # https://docs.astral.sh/ruff/formatter/#conflicting-lint-rules
+  "W191",   # tab-indentation
+  "E111",   # indentation-with-invalid-multiple
+  "E114",   # indentation-with-invalid-multiple-comment
+  "E117",   # over-indented
+  "D206",   # docstring-tab-indentation
+  "D300",   # triple-single-quotes
+  "Q000",   # bad-quotes-inline-string
+  "Q001",   # bad-quotes-multiline-string
+  "Q002",   # bad-quotes-docstring
+  "Q003",   # avoidable-escaped-quote
+  "COM812", # missing-trailing-comma
+  "COM819", # prohibited-trailing-comma
+  "ISC001", #
+  "ISC002", # multi-line-implicit-string-concatenation
+  # Add other other rules to ignore. See also https://docs.astral.sh/ruff/rules/.
+  "E501",   # Checks for lines that exceed the specified maximum character length.
+  "D1",     # Checks for missing docstrings.
+  "PT003",  # Checks for `pytest.fixture` calls with scope="function".
+  "PT011",  # Checks for `pytest.raises` calls without a match parameter.
+  "FBT001", # boolean typed positional argument in function definition
+  "FBT002", # boolean default positional argument in function definition
+  "FBT003", # boolean positional value in call
+  "SLF001", # Private member acccessed
+  "FIX002", # Line contains TODO
+  "TD003",  # Missing issue link for this TODO
+]
+fixable = ["ALL"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.format]
+indent-style = "space"
+quote-style = "double"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+docstring-code-format = true
+docstring-code-line-length = "dynamic"
+
+[tool.ruff.lint.pylint]
+max-args = 10
+max-returns = 10
+
+
+# https://github.com/astral-sh/ty/blob/main/docs/reference/configuration.md#extra-paths
+[tool.ty.environment]
+python = "./.venv/"
+python-version = "3.10"
+root = ["./src/"]
